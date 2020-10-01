@@ -11,4 +11,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'The answer of name is: ${{ on.typeform.outputs.answers_map["name"] }}
+          args: 'The answer of name is: ${{ on.typeform.outputs.answers_map["name"] }}'
