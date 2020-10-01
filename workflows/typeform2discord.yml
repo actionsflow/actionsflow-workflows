@@ -1,0 +1,14 @@
+name: Collect new Typeform responses to send a discord message
+on:
+  typeform:
+jobs:
+  discord:
+    name: Send a message to discord
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'The answer of name is: ${{ on.typeform.outputs.answers_map["name"] }}

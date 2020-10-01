@@ -1,0 +1,16 @@
+name: Send a IFTTT webhook request when a npm package update
+on:
+  npm:
+    name: actionsflow
+jobs:
+  IFTTT:
+    name: Send a webhook to IFTTT
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actionsflow/ifttt-webhook-action@v1
+        with:
+          event: notice
+          key: ${{ secrets.IFTTT_KEY }}
+          value1: ${{on.npm.outputs.name}}
+          value2: ${{on.npm.outputs.version}}
+          value3: NPM package update notice

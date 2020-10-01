@@ -1,0 +1,19 @@
+name: Send a faceebook message when received an email
+on:
+  email:
+    imap:
+      host: outlook.office365.com
+      user: ${{secrets.EMAIL_USER}}
+      password: ${{secrets.EMAIL_PASSWORD}}
+jobs:
+  facebook:
+    name: Send a message to facebook
+    runs-on: ubuntu-latest
+    steps:
+      - name: facebook notification
+        uses: appleboy/facebook-action@master
+        with:
+          fb_page_token: ${{ secrets.FB_PAGE_TOKEN }}
+          fb_verify_token: ${{ secrets.FB_VERIFY_TOKEN }}
+          to: ${{ secrets.FB_TO }}
+          args: ${{(on.email.outputs.subject)}}

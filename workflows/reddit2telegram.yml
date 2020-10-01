@@ -1,0 +1,15 @@
+name: Send a telegram message when new hot subreddit
+on:
+  reddit:
+    url: https://reddit.com/r/news/
+jobs:
+  telegram:
+    name: Send a telegram message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a telegram message
+        uses: appleboy/telegram-action@v0.0.8
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: ${{ on.reddit.outputs.title }}
