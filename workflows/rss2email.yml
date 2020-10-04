@@ -10,8 +10,8 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v2
         with:
-          server_address: smtp.office365.com
-          server_port: 587
+          server_address: smtp.zoho.com
+          server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: ${{ on.rss.outputs.title }}
@@ -19,6 +19,6 @@ jobs:
           body: ${{ on.rss.outputs.content }}
           # Read file contents as body:
           to: theowenyoung@gmail.com
-          from: theowenyoung@outlook.com # <user@example.com>
+          from: theowenyoung@zohomail.com # <user@example.com>
           # Optional content type (defaults to text/plain):
           content_type: text/html
