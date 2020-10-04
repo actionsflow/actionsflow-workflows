@@ -1,0 +1,25 @@
+name: Send a telegram message when new Youtube videos update
+on:
+  youtube:
+    channel_id:
+      - UCnCikd0s4i9KoDtaHPlK-JA
+      - UCseUQK4kC3x2x543nHtGpzw
+    playlist_id:
+      - PL99D544ED5B1E58D8
+      - PL2qc-hH9Ip-SSUaZd_G8IxtecK0WZ-af-
+jobs:
+  telegram:
+    name: Send a telegram message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a telegram message
+        uses: appleboy/telegram-action@v0.1.0
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            *${{on.youtube.outputs.title}}*
+            
+            ${{on.youtube.outputs.description}} ${{on.youtube.outputs.link}}
+          format: markdown
+

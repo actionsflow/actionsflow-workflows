@@ -12,4 +12,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: ${{ on.reddit.outputs.title }}
+          message: ${{ on.reddit.outputs.title }}
