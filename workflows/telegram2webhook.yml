@@ -1,0 +1,15 @@
+on:
+  telegram_bot:
+    # note: you should set webhook first, see https://github.com/actionsflow/actionsflow/tree/main/packages/actionsflow-trigger-telegram_bot#options
+    webhook: true
+jobs:
+  webhook:
+    name: Send HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://example.com/webhook
+          method: 'POST'
+          body: ${{ toJson(on.telegram_bot.outputs) }}
