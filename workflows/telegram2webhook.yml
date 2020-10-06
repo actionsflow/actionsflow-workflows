@@ -1,3 +1,4 @@
+name: Send a webhook when receive a telegram message
 on:
   telegram_bot:
     # note: you should set webhook first, see https://github.com/actionsflow/actionsflow/tree/main/packages/actionsflow-trigger-telegram_bot#options
