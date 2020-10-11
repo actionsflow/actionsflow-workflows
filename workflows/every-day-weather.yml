@@ -1,3 +1,4 @@
+name: Send a telegram message abount today's weather every morning
 on:
   weather:
     apiKey: ${{ secrets.OPENWEATHERMAP_API_KEY }}
