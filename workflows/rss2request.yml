@@ -1,0 +1,20 @@
+name: Send a HTTP Request when new RSS item is detected
+on:
+  rss:
+    url: https://hnrss.org/newest?count=15
+jobs:
+  request:
+    name: Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request      
+        uses: actionsflow/axios@main
+        with:
+          url: https://hookb.in/eKgjENOKRYUeYYRdXL6W
+          method: POST
+          body: |
+            {
+              "link":"${{on.rss.outputs.link}}", 
+              "title": "${{on.rss.outputs.title}}",
+              "content":"<<<${{on.rss.outputs.contentSnippet}}>>>"
+            }
