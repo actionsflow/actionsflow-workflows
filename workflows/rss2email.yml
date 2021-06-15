@@ -21,4 +21,4 @@ jobs:
           to: theowenyoung@gmail.com
           from: theowenyoung@zohomail.com # <user@example.com>
           # Optional content type (defaults to text/plain):
-          content_type: text/html
+          formart: text/html
